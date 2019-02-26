@@ -101,9 +101,7 @@ public class Player : Character
         isAttacking = true;
         myAnimator.SetBool("attack", isAttacking);
         yield return new WaitForSeconds(0.4f); //hardcode
-
-        Spell s = Instantiate(spellPrefab[attackTypeIndex], transform.position, Quaternion.identity).GetComponent<Spell>();
-        s.MyTarget = MyTarget;
+        Instantiate(spellPrefab[attackTypeIndex], transform.position, Quaternion.identity);
         StopAttack();
     }
 
