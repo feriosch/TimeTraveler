@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+
 public abstract class Character : MonoBehaviour
 {
     [SerializeField]
@@ -16,6 +19,9 @@ public abstract class Character : MonoBehaviour
     protected bool isAttacking = false;
 
     protected Coroutine attackRoutine;
+
+    [SerializeField]
+    protected Transform hitBox;
 
     //VARIABLES DE ANIMACION DE JUGADOR
     protected bool isUsingSword = false;

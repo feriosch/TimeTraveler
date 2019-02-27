@@ -12,6 +12,8 @@ public class Spell : MonoBehaviour
 
     public Transform MyTarget { get; set; }
 
+    private bool alive = true; //El ataque sigue vivo, aun no se ha detenido. 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,22 +22,25 @@ public class Spell : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
-        Vector2 direction = MyTarget.position - transform.position;
-        myRigidBody.velocity = direction.normalized * speed;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (MyTarget != null)
+        {
+            Vector2 direction = MyTarget.position - transform.position;
+            myRigidBody.velocity = direction.normalized * speed;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+       
     }
 
-    public void Fire()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "EnemyHitbox" && collision.transform == MyTarget.transform)
+        {
+            GetComponent<Animator>().SetTrigger("Impact");
+            myRigidBody.velocity = Vector2.zero;
+            MyTarget = null;
+        }
     }
 }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private Player player;
+
+    private NPC currentTarget;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +29,30 @@ public class GameManager : MonoBehaviour
             //En hit se guarda la ubicacion que cliqueo el usuario
             //Layer 9 = 2^9 = 512
             //En la capa 9 se guardan los enemigos (o todo lo que pueda recibir click izquierdo)
-            //if (hit.collider != null) //Toco algo
-            
-                //if (hit.collider.tag == "Enemy")
+            if (hit.collider != null) //Toco algo
+            {
+                if (currentTarget != null)
+                {
+                    currentTarget.DeSelect();
+                }
+
+                currentTarget = hit.collider.GetComponent<NPC>();
+
+                player.MyTarget = currentTarget.Select();
+            }
+            else
+            {
+                if (currentTarget != null)
+                {
+                    currentTarget.DeSelect();
+                }
+
+                currentTarget = null;
+                player.MyTarget = null;
+            }
                 
-             player.MyTarget = hit.transform;
                 
-                
-                //Debug.Log("Hola")
+            //Debug.Log("Hola")
         }
         
     }
