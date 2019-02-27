@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField]
-    private Stat health;
+    //[SerializeField]
+    //private Stat health;
 
-    private float initHealth = 100;
+    
 
     [SerializeField]
     private int attackType = 0;
@@ -26,7 +26,7 @@ public class Player : Character
     // Start is called before the first frame update
     protected override void Start()
     {
-        health.Initialize(initHealth, initHealth);
+        
         //target = GameObject.Find("Target").transform;
         base.Start();
     }
@@ -102,7 +102,7 @@ public class Player : Character
         myAnimator.SetBool("attack", isAttacking);
         yield return new WaitForSeconds(0.4f); //hardcode
         Spell s = Instantiate(spellPrefab[attackTypeIndex], transform.position, Quaternion.identity).GetComponent<Spell>();
-        s.MyTarget = MyTarget;
+        s.Initialize(MyTarget);
         StopAttack();
     }
 
@@ -121,13 +121,17 @@ public class Player : Character
 
     private bool inLineOfSight()
     {
-        Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
-
-        //Debug.DrawRay(transform.position, targetDirection, Color.red);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position),256);
-        if (hit.collider == null)
+        if (MyTarget != null)
         {
-            return true;
+            Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
+
+            //Debug.DrawRay(transform.position, targetDirection, Color.red);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
+            if (hit.collider == null)
+            {
+                return true;
+            }
+            
         }
         return false;
     }

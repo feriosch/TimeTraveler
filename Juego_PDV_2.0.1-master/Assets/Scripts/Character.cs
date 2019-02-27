@@ -23,6 +23,12 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     protected Transform hitBox;
 
+    [SerializeField]
+    protected Stat health;
+
+    [SerializeField]
+    private float initHealth;
+
     //VARIABLES DE ANIMACION DE JUGADOR
     protected bool isUsingSword = false;
     protected bool isUsingGrayArmor = false;
@@ -39,6 +45,7 @@ public abstract class Character : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        health.Initialize(initHealth, initHealth);
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
@@ -133,4 +140,14 @@ public abstract class Character : MonoBehaviour
         }
         
     }
+
+    public virtual void TakeDamage(float damage)
+    {
+        health.MyCurrentValue -= damage;
+        if (health.MyCurrentValue <= 0)
+        {
+            myAnimator.SetTrigger("Die");
+        }
+    }
+
 }

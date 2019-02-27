@@ -9,10 +9,12 @@ public class Spell : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    public Transform MyTarget { get; private set; }
 
-    public Transform MyTarget { get; set; }
+    [SerializeField]
+    private int damage = 10;
 
-    private bool alive = true; //El ataque sigue vivo, aun no se ha detenido. 
+    //private bool alive = true; //El ataque sigue vivo, aun no se ha detenido. 
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,11 @@ public class Spell : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         //TEST
         
+    }
+
+    public void Initialize(Transform target)
+    {
+        this.MyTarget = target;
     }
 
     private void FixedUpdate()
@@ -38,6 +45,8 @@ public class Spell : MonoBehaviour
     {
         if (collision.tag == "EnemyHitbox" && collision.transform == MyTarget.transform)
         {
+            speed = 0;
+            collision.GetComponentInParent<Enemy>().TakeDamage(damage);
             GetComponent<Animator>().SetTrigger("Impact");
             myRigidBody.velocity = Vector2.zero;
             MyTarget = null;
