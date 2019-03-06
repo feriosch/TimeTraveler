@@ -16,9 +16,9 @@ public class DeathBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timePassed += Time.deltaTime;
-        if (timePassed >= 5)
+        if (timePassed >= 3)
         {
-            Destroy(animator.gameObject);
+            animator.GetComponent<NPC>().OnCharacterRemoved();
         }
     }
 

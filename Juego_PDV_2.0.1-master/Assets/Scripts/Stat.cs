@@ -11,6 +11,7 @@ public class Stat : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI statValue;
 
+    [SerializeField]
     private float lerpSpeed = 5f;
 
     private float currentFill;
@@ -67,7 +68,12 @@ public class Stat : MonoBehaviour
 
     public void Initialize(float currentValue, float maxValue)
     {
+        if (content == null)
+        {
+            content = GetComponent<Image>();
+        }
         MyMaxValue = maxValue;
         MyCurrentValue = currentValue;
+        content.fillAmount = MyCurrentValue / MyMaxValue;
     }
 }
