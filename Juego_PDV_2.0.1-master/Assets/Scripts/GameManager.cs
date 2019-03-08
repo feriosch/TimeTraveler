@@ -31,11 +31,13 @@ public class GameManager : MonoBehaviour
             //En la capa 9 se guardan los enemigos (o todo lo que pueda recibir click izquierdo)
             if (hit.collider != null) //Toco algo
             {
+
                 if (currentTarget != null)
                 {
                     currentTarget.DeSelect();
                 }
 
+                
                 currentTarget = hit.collider.GetComponent<NPC>();
 
                 player.MyTarget = currentTarget.Select();

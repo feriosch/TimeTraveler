@@ -8,11 +8,11 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float speed;
 
     protected Animator myAnimator;
 
-    protected Vector2 direction;
+    private Vector2 direction;
 
     protected Rigidbody2D myRigidBody;
 
@@ -42,9 +42,12 @@ public abstract class Character : MonoBehaviour
     public bool isMoving 
     {
         get {
-            return direction.x != 0 || direction.y != 0;
+            return Direction.x != 0 || Direction.y != 0;
         }
     }
+
+    public Vector2 Direction { get => direction; set => direction = value; }
+    public float Speed { get => speed; set => speed = value; }
 
 
     // Start is called before the first frame update
@@ -68,7 +71,7 @@ public abstract class Character : MonoBehaviour
 
     public void Move()
     {
-        myRigidBody.velocity = direction.normalized * speed;
+        myRigidBody.velocity = Direction.normalized * Speed;
         //Normalizar = hacerlo unitario
     }
 
@@ -78,11 +81,11 @@ public abstract class Character : MonoBehaviour
         {
             if (isMoving)
             {
-                AnimateMovement(direction);
+                AnimateMovement(Direction);
 
                 ActivateLayer("WalkLayer");
-                myAnimator.SetFloat("x", direction.x);
-                myAnimator.SetFloat("y", direction.y);
+                myAnimator.SetFloat("x", Direction.x);
+                myAnimator.SetFloat("y", Direction.y);
 
                 StopAttack();
             }
@@ -100,11 +103,11 @@ public abstract class Character : MonoBehaviour
         {
             if (isMoving)
             {
-                AnimateMovement(direction);
+                AnimateMovement(Direction);
 
                 ActivateLayer("SwordWalkLayer");
-                myAnimator.SetFloat("x", direction.x);
-                myAnimator.SetFloat("y", direction.y);
+                myAnimator.SetFloat("x", Direction.x);
+                myAnimator.SetFloat("y", Direction.y);
 
                 StopAttack();
             }

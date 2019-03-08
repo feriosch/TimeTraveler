@@ -9,6 +9,12 @@ public class Spell : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    [SerializeField]
+    private float spellTime;
+
+    private float time = 0;
+
+
     public Transform MyTarget { get; private set; }
 
     [SerializeField]
@@ -37,6 +43,15 @@ public class Spell : MonoBehaviour
             myRigidBody.velocity = direction.normalized * speed;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        time += Time.deltaTime;
+        if (time > spellTime)
+        {
+            speed = 0;
+            GetComponent<Animator>().SetTrigger("Impact");
+            myRigidBody.velocity = Vector2.zero;
+            time = 0;
         }
        
     }

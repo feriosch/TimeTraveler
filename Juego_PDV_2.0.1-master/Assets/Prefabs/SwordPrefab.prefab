@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  spellTime: 0.7
   damage: 15
 --- !u!95 &6712364940263662893
 Animator:

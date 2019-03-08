@@ -22,6 +22,8 @@ public class Player : Character
 
     public Transform MyTarget { get; set; }
 
+    private Vector3 min, max;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -36,12 +38,14 @@ public class Player : Character
     {
         GetInput();
 
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), Mathf.Clamp(transform.position.y, min.y, max.y), transform.position.z);
+
         base.Update();
     }
 
     public void GetInput()
     {
-        direction = Vector2.zero;
+        Direction = Vector2.zero;
 
         //solamente para probar que funcione la vida
         if (Input.GetKeyDown(KeyCode.M))
@@ -57,22 +61,22 @@ public class Player : Character
         if (Input.GetKey(KeyCode.W))
         {
             exitIndex = 0;
-            direction = Vector2.up;
+            Direction = Vector2.up;
         }
         if (Input.GetKey(KeyCode.S))
         {
             exitIndex = 2;
-            direction = Vector2.down;
+            Direction = Vector2.down;
         }
         if (Input.GetKey(KeyCode.D))
         {
             exitIndex = 1;
-            direction = Vector2.right;
+            Direction = Vector2.right;
         }
         if (Input.GetKey(KeyCode.A))
         {
             exitIndex = 3;
-            direction = Vector2.left;
+            Direction = Vector2.left;
         }
 
         //seleccion de item de ataque
@@ -93,7 +97,12 @@ public class Player : Character
         {
             CastSpell(attackType);
         }
+    }
 
+    public void SetLimits(Vector3 min, Vector3 max)
+    {
+        this.min = min;
+        this.max = max;
     }
 
     private IEnumerator Attack(int attackTypeIndex)

@@ -7,6 +7,23 @@ public class Enemy : NPC
     [SerializeField]
     private CanvasGroup healthGroup;
 
+    private Transform target;
+
+    private State currentState;
+
+    public Transform Target { get => target; set => target = value; }
+
+    protected void Awake()
+    {
+        ChangeState(new IdleState());
+    }
+
+    protected override void Update()
+    {
+        currentState.Update();
+        base.Update();
+    }
+
     public override Transform Select()
     {
         healthGroup.alpha = 1;
@@ -25,5 +42,17 @@ public class Enemy : NPC
     {
         base.TakeDamage(damage);
         OnHealthChanged(health.MyCurrentValue);
+    }
+
+
+    public void ChangeState(State newState)
+    {
+        if (currentState != null)
+        {
+            currentState.Exit();
+        }
+        currentState = newState;
+
+        currentState.Enter(this);
     }
 }
