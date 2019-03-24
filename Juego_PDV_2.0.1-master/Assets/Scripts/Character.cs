@@ -10,13 +10,13 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    protected Animator myAnimator;
+    public Animator MyAnimator { get; set; }
 
     private Vector2 direction;
 
     protected Rigidbody2D myRigidBody;
 
-    protected bool isAttacking = false;
+    public bool IsAttacking { get; set; }
 
     protected Coroutine attackRoutine;
 
@@ -34,6 +34,8 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     private float initHealth;
 
+    public Transform MyTarget { get; set; }
+
     //VARIABLES DE ANIMACION DE JUGADOR
     protected bool isUsingSword = false;
     protected bool isUsingGrayArmor = false;
@@ -49,13 +51,19 @@ public abstract class Character : MonoBehaviour
     public Vector2 Direction { get => direction; set => direction = value; }
     public float Speed { get => speed; set => speed = value; }
 
+    public bool IsAlive
+    {
+        get{
+             return health.MyCurrentValue > 0;
+        }
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         health.Initialize(initHealth, initHealth);
         myRigidBody = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
+        MyAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,55 +79,65 @@ public abstract class Character : MonoBehaviour
 
     public void Move()
     {
-        myRigidBody.velocity = Direction.normalized * Speed;
-        //Normalizar = hacerlo unitario
+        if (IsAlive) {
+            myRigidBody.velocity = Direction.normalized * Speed;
+            //Normalizar = hacerlo unitario
+        }
+
+
     }
 
     public void HandleLayers()
     {
-        if (!isUsingSword)
+        if (IsAlive)
         {
-            if (isMoving)
+            if (!isUsingSword)
             {
-                AnimateMovement(Direction);
+                if (isMoving)
+                {
+                    AnimateMovement(Direction);
 
-                ActivateLayer("WalkLayer");
-                myAnimator.SetFloat("x", Direction.x);
-                myAnimator.SetFloat("y", Direction.y);
+                    ActivateLayer("WalkLayer");
+                    MyAnimator.SetFloat("x", Direction.x);
+                    MyAnimator.SetFloat("y", Direction.y);
+                }
+                else if (IsAttacking)
+                {
+                    ActivateLayer("AttackLayer");
+                }
+                else
+                {
+                    ActivateLayer("BasicLayer");
+                }
+            }
 
-                StopAttack();
-            }
-            else if (isAttacking)
+            if (isUsingSword)
             {
-                ActivateLayer("AttackLayer");
-            }
-            else
-            {
-                ActivateLayer("BasicLayer");
+                if (isMoving)
+                {
+                    AnimateMovement(Direction);
+
+                    ActivateLayer("SwordWalkLayer");
+                    MyAnimator.SetFloat("x", Direction.x);
+                    MyAnimator.SetFloat("y", Direction.y);
+
+                }
+                else if (IsAttacking)
+                {
+                    ActivateLayer("SwordAttackLayer");
+                }
+                else
+                {
+                    ActivateLayer("SwordBasicLayer");
+                }
             }
         }
-
-        if (isUsingSword)
+        else
         {
-            if (isMoving)
-            {
-                AnimateMovement(Direction);
-
-                ActivateLayer("SwordWalkLayer");
-                myAnimator.SetFloat("x", Direction.x);
-                myAnimator.SetFloat("y", Direction.y);
-
-                StopAttack();
-            }
-            else if (isAttacking)
-            {
-                ActivateLayer("SwordAttackLayer");
-            }
-            else
-            {
-                ActivateLayer("SwordBasicLayer");
-            }
+            ActivateLayer("DeathLayer");
         }
+
+        
 
         
     }
@@ -131,30 +149,24 @@ public abstract class Character : MonoBehaviour
 
     public void ActivateLayer(string layerName)
     {
-        for (int i = 0; i < myAnimator.layerCount; i++)
+        for (int i = 0; i < MyAnimator.layerCount; i++)
         {
-            myAnimator.SetLayerWeight(i, 0);
+            MyAnimator.SetLayerWeight(i, 0);
         }
-        myAnimator.SetLayerWeight(myAnimator.GetLayerIndex(layerName), 1);
+        MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);
     }
 
-    public void StopAttack()
+
+
+    public virtual void TakeDamage(float damage, Transform source)
     {
-        if (attackRoutine != null)
-        {
-            StopCoroutine(attackRoutine);
-            isAttacking = false;
-            myAnimator.SetBool("attack", isAttacking); 
-        }
         
-    }
-
-    public virtual void TakeDamage(float damage)
-    {
         health.MyCurrentValue -= damage;
         if (health.MyCurrentValue <= 0)
         {
-            myAnimator.SetTrigger("Die");
+            Direction = Vector2.zero;
+            myRigidBody.velocity = Direction;
+            MyAnimator.SetTrigger("die");
         }
     }
 

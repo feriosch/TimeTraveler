@@ -9,9 +9,16 @@ public class IdleState : State
         
     }
 
+    public override void Enter(Enemy parent)
+    {
+        base.Enter(parent);
+        this.parent.Reset();
+    }
+
     public override void Update()
     {
-        if (parent.Target != null)
+        //Debug.Log("IdleState");
+        if (parent.MyTarget != null)
         {
             parent.ChangeState(new FollowState());
         }

@@ -7,21 +7,49 @@ public class Enemy : NPC
     [SerializeField]
     private CanvasGroup healthGroup;
 
-    private Transform target;
+    //private Transform target;
 
     private State currentState;
 
-    public Transform Target { get => target; set => target = value; }
+    public float MyAttackRange { get; set; }
+
+    public float MyAttackTime { get; set; }
+
+    public Vector3 MyStartPosition { get; set; }
+
+    [SerializeField]
+    private float initAggroRange;
+
+    public float MyAggroRange { get; set; }
+
+    public bool InRange
+    {
+        get {
+            return Vector2.Distance(transform.position, MyTarget.position) < MyAggroRange;
+        }
+    }
 
     protected void Awake()
     {
+        MyStartPosition = transform.position;
+        MyAggroRange = initAggroRange;
+        MyAttackRange = 1.5f;
         ChangeState(new IdleState());
     }
 
     protected override void Update()
     {
-        currentState.Update();
+        if(IsAlive)
+        {
+            if (!IsAttacking) //tiempo entre ataques
+            {
+                MyAttackTime += Time.deltaTime;
+            }
+            currentState.Update();
+            
+        }
         base.Update();
+
     }
 
     public override Transform Select()
@@ -38,10 +66,15 @@ public class Enemy : NPC
         base.DeSelect();
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, Transform source)
     {
-        base.TakeDamage(damage);
-        OnHealthChanged(health.MyCurrentValue);
+        if (!(currentState is EvadeState))
+        {
+            SetTarget(source);
+            base.TakeDamage(damage, source);
+            OnHealthChanged(health.MyCurrentValue);
+        }
+        
     }
 
 
@@ -54,5 +87,25 @@ public class Enemy : NPC
         currentState = newState;
 
         currentState.Enter(this);
+    }
+
+    public void SetTarget(Transform target)
+    {
+        if (MyTarget == null && !(currentState is EvadeState))
+        {
+            float distance = Vector2.Distance(transform.position, target.position);
+            MyAggroRange = initAggroRange;
+            MyAggroRange += distance;
+            MyTarget = target;
+        }
+    }
+     
+    public void Reset()
+    {
+        this.MyTarget = null;
+        this.MyAggroRange = initAggroRange;
+        this.MyHealth.MyCurrentValue = this.MyHealth.MyMaxValue;
+        OnHealthChanged(health.MyCurrentValue);
+        
     }
 }

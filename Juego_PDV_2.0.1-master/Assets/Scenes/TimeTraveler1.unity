@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1349388e82b4a44da58fa5a31b499dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   hitBox: {fileID: 0}
   health: {fileID: 1825782015}
   initHealth: 100
@@ -548,7 +548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250856226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.72, y: 2.69, z: 0}
+  m_LocalPosition: {x: 6.08, y: 3.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1393486730}
@@ -601,6 +601,7 @@ MonoBehaviour:
   initHealth: 25
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
   healthGroup: {fileID: 985414108}
+  initAggroRange: 4
 --- !u!95 &250856231
 Animator:
   serializedVersion: 3
@@ -993,7 +994,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 3
 --- !u!1 &773160226
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class Spell : MonoBehaviour
 
     public Transform MyTarget { get; private set; }
 
+    private Transform source;
+
     [SerializeField]
     private int damage = 10;
 
@@ -30,9 +32,10 @@ public class Spell : MonoBehaviour
         
     }
 
-    public void Initialize(Transform target)
+    public void Initialize(Transform target, Transform source)
     {
-        this.MyTarget = target;
+        MyTarget = target;
+        this.source = source;
     }
 
     private void FixedUpdate()
@@ -60,8 +63,10 @@ public class Spell : MonoBehaviour
     {
         if (collision.tag == "EnemyHitbox" && collision.transform == MyTarget.transform)
         {
+            Character c = collision.GetComponentInParent<Character>();
             speed = 0;
-            collision.GetComponentInParent<Enemy>().TakeDamage(damage);
+            c.TakeDamage(damage, source);
+            //collision.GetComponentInParent<Enemy>().TakeDamage(damage);
             GetComponent<Animator>().SetTrigger("Impact");
             myRigidBody.velocity = Vector2.zero;
             MyTarget = null;

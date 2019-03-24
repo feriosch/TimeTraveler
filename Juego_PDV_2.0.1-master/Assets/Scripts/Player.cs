@@ -20,8 +20,6 @@ public class Player : Character
     [SerializeField]
     private Block[] blocks;
 
-    public Transform MyTarget { get; set; }
-
     private Vector3 min, max;
 
 
@@ -97,6 +95,11 @@ public class Player : Character
         {
             CastSpell(attackType);
         }
+
+        if (isMoving)
+        {
+            StopAttack();
+        }
     }
 
     public void SetLimits(Vector3 min, Vector3 max)
@@ -107,11 +110,11 @@ public class Player : Character
 
     private IEnumerator Attack(int attackTypeIndex)
     {
-        isAttacking = true;
-        myAnimator.SetBool("attack", isAttacking);
+        IsAttacking = true;
+        MyAnimator.SetBool("attack", IsAttacking);
         yield return new WaitForSeconds(0.4f); //hardcode
         Spell s = Instantiate(spellPrefab[attackTypeIndex], transform.position, Quaternion.identity).GetComponent<Spell>();
-        s.Initialize(MyTarget);
+        s.Initialize(MyTarget, transform);
         StopAttack();
     }
 
@@ -119,10 +122,11 @@ public class Player : Character
     {
         Block();
         //Clickeaste algo clickeable, no estas haciendo un ataque, no te estas moviendo y no tocas los collliders de la vista
+        //El enemigo a atacar esta vivo
         //Atacar moviendote arruina las animaciones
         //Igualmente la animacion de un ataque debe terminar antes de empezar otro
         //Los colliders le dan mas realismo al juego
-        if (MyTarget != null && !isAttacking && !isMoving && inLineOfSight())
+        if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !IsAttacking && !isMoving && inLineOfSight())
         {
             attackRoutine = StartCoroutine(Attack(attackTypeIndex));
         }
@@ -158,5 +162,16 @@ public class Player : Character
     {
         attackType = attackTypeIndex;
     }
-   
+
+    public void StopAttack()
+    {
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+            IsAttacking = false;
+            MyAnimator.SetBool("attack", IsAttacking);
+        }
+
+    }
+
 }

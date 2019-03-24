@@ -6,7 +6,7 @@ public abstract class State
 {
     public Enemy parent;
 
-    public void Enter(Enemy parent)
+    public virtual void Enter(Enemy parent)
     {
         this.parent = parent;
     }
