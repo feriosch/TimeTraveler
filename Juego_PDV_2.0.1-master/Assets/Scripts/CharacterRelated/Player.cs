@@ -6,27 +6,21 @@ public class Player : Character
 {
     //[SerializeField]
     //private Stat health;
-
-    
-
-    [SerializeField]
-    private int attackType = 0;
-
-    [SerializeField]
-    private GameObject[] spellPrefab;
-
+    //[SerializeField]
+    //private int AttackType = 0;
+    public int AttackType { get; set; }
+    //[SerializeField]
+    //private GameObject[] spellPrefab;
     private int exitIndex;
-
     [SerializeField]
     private Block[] blocks;
-
+    private SpellBook spellBook;
     private Vector3 min, max;
-
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        
+        spellBook = GetComponent<SpellBook>();
         //target = GameObject.Find("Target").transform;
         base.Start();
     }
@@ -35,9 +29,7 @@ public class Player : Character
     protected override void Update()
     {
         GetInput();
-
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), Mathf.Clamp(transform.position.y, min.y, max.y), transform.position.z);
-
         base.Update();
     }
 
@@ -81,19 +73,19 @@ public class Player : Character
         if (Input.GetKey(KeyCode.Alpha1))
         {
             isUsingSword = false;
-            attackType = 0;
+            AttackType = 0;
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
             isUsingSword = true;
-            attackType = 1;
+            AttackType = 1;
         }
 
-        //ATAQUE PRINCIPAL
+        //ATAQUE PRINCIPAL CLICK DERECHO
         if (Input.GetMouseButtonDown(1))
         {
-            CastSpell(attackType);
+            CastSpell(AttackType);
         }
 
         if (isMoving)
@@ -110,10 +102,11 @@ public class Player : Character
 
     private IEnumerator Attack(int attackTypeIndex)
     {
+        Spell newSpell = spellBook.CastSpell(attackTypeIndex);
         IsAttacking = true;
         MyAnimator.SetBool("attack", IsAttacking);
-        yield return new WaitForSeconds(0.4f); //hardcode
-        Spell s = Instantiate(spellPrefab[attackTypeIndex], transform.position, Quaternion.identity).GetComponent<Spell>();
+        yield return new WaitForSeconds(newSpell.MyCastTime); //hardcode
+        SpellScript s = Instantiate(newSpell.MySpellPrefab, transform.position, Quaternion.identity).GetComponent<SpellScript>();
         s.Initialize(MyTarget, transform);
         StopAttack();
     }
@@ -137,7 +130,6 @@ public class Player : Character
         if (MyTarget != null)
         {
             Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
-
             //Debug.DrawRay(transform.position, targetDirection, Color.red);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
             if (hit.collider == null)
@@ -160,7 +152,7 @@ public class Player : Character
 
     private void ChangeAttackType(int attackTypeIndex) //con este metodo cambia el ataque del HUD
     {
-        attackType = attackTypeIndex;
+        AttackType = attackTypeIndex;
     }
 
     public void StopAttack()
@@ -171,7 +163,5 @@ public class Player : Character
             IsAttacking = false;
             MyAnimator.SetBool("attack", IsAttacking);
         }
-
     }
-
 }

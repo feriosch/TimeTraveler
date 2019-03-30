@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : MonoBehaviour
+public class SpellScript : MonoBehaviour
 {
     private Rigidbody2D myRigidBody;
 
