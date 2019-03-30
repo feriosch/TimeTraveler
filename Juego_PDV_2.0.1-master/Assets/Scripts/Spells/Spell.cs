@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 
 [Serializable]
-public class Spell
+public class Spell : IUsable
 {
     [SerializeField]
     private String name;
@@ -27,4 +27,9 @@ public class Spell
     public float MySpeed { get => speed;  }
     public GameObject MySpellPrefab { get => spellPrefab; }
     public float MyCastTime { get => castTime; set => castTime = value; }
+
+    public void Use()
+    {
+        Player.MyInstance.SpellType = MyName;
+    }
 }

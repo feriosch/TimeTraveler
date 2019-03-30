@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class Player : Character
 {
+    private static Player instance;
+
+    public static Player MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+            }
+
+            return instance;
+        }
+    }
     //[SerializeField]
     //private Stat health;
     //[SerializeField]
     //private int AttackType = 0;
     public int AttackType { get; set; }
+    public string SpellType { get; set; }
     //[SerializeField]
     //private GameObject[] spellPrefab;
     private int exitIndex;
@@ -48,49 +63,59 @@ public class Player : Character
         }
 
         //movimiento del jugador
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["UP"]))
         {
             exitIndex = 0;
-            Direction = Vector2.up;
+            Direction += Vector2.up;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["DOWN"]))
         {
             exitIndex = 2;
-            Direction = Vector2.down;
+            Direction += Vector2.down;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["RIGHT"]))
         {
             exitIndex = 1;
-            Direction = Vector2.right;
+            Direction += Vector2.right;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["LEFT"]))
         {
             exitIndex = 3;
-            Direction = Vector2.left;
+            Direction += Vector2.left;
         }
 
         //seleccion de item de ataque
-        if (Input.GetKey(KeyCode.Alpha1))
+        /*if (Input.GetKey(KeyCode.Alpha1))
         {
             isUsingSword = false;
-            AttackType = 0;
+            //SpellType = "Punch"; 
+            //AttackType = 0;
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
             isUsingSword = true;
-            AttackType = 1;
-        }
+            //SpellType = "Sword";
+            //AttackType = 1;
+        }*/
 
         //ATAQUE PRINCIPAL CLICK DERECHO
         if (Input.GetMouseButtonDown(1))
         {
-            CastSpell(AttackType);
+            CastSpell(SpellType);
         }
 
         if (isMoving)
         {
             StopAttack();
+        }
+
+        foreach (string action in KeybindManager.MyInstance.ActionBinds.Keys)
+        {
+            if (Input.GetKeyDown(KeybindManager.MyInstance.ActionBinds[action]))
+            {
+                UIManager.MyInstance.ClickActionButton(action);
+            }
         }
     }
 
@@ -100,9 +125,10 @@ public class Player : Character
         this.max = max;
     }
 
-    private IEnumerator Attack(int attackTypeIndex)
+    private IEnumerator Attack(string spellName)
     {
-        Spell newSpell = spellBook.CastSpell(attackTypeIndex);
+        Spell newSpell = spellBook.CastSpell(spellName);
+        Debug.Log(spellName);
         IsAttacking = true;
         MyAnimator.SetBool("attack", IsAttacking);
         yield return new WaitForSeconds(newSpell.MyCastTime); //hardcode
@@ -111,7 +137,7 @@ public class Player : Character
         StopAttack();
     }
 
-    public void CastSpell(int attackTypeIndex)
+    public void CastSpell(string spellName)
     {
         Block();
         //Clickeaste algo clickeable, no estas haciendo un ataque, no te estas moviendo y no tocas los collliders de la vista
@@ -121,7 +147,7 @@ public class Player : Character
         //Los colliders le dan mas realismo al juego
         if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !IsAttacking && !isMoving && inLineOfSight())
         {
-            attackRoutine = StartCoroutine(Attack(attackTypeIndex));
+            attackRoutine = StartCoroutine(Attack(spellName));
         }
     }
 

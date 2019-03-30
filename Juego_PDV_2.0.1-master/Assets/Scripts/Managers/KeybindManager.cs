@@ -41,6 +41,8 @@ public class KeybindManager : MonoBehaviour
         BindKey("ACT1", KeyCode.Alpha1);
         BindKey("ACT2", KeyCode.Alpha2);
         BindKey("ACT3", KeyCode.Alpha3);
+
+        Debug.Log(KeyBinds);
     }
 
     public void BindKey(string key, KeyCode keyBind)
@@ -51,7 +53,7 @@ public class KeybindManager : MonoBehaviour
             currentDictionary = ActionBinds;
         }
 
-        if (!currentDictionary.ContainsValue(keyBind))
+        if (!currentDictionary.ContainsKey(key))
         {
             currentDictionary.Add(key, keyBind);
             UIManager.MyInstance.UpdateKeyText(key, keyBind);
@@ -67,4 +69,23 @@ public class KeybindManager : MonoBehaviour
         UIManager.MyInstance.UpdateKeyText(key, keyBind);
         bindName = string.Empty;
     }
+
+    public void KeyBindOnClick(string bindName)
+    {
+        this.bindName = bindName;
+
+    }
+
+    private void OnGUI()
+    {
+        if (bindName != string.Empty)
+        {
+            Event e = Event.current;
+            if (e.isKey)
+            {
+                BindKey(bindName, e.keyCode);
+            }
+        }
+    }
+
 }

@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private Button[] actionButtons;
+    private ActionButton[] actionButtons;
 
-    private KeyCode action1, action2, action3;
+    /*private KeyCode action1, action2, action3;*/
 
     private static UIManager instance;
 
@@ -46,18 +46,22 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+        //keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
         //KeyBinds
-        action1 = KeyCode.Alpha1;
+        /*action1 = KeyCode.Alpha1;
         action2 = KeyCode.Alpha2;
-        action3 = KeyCode.Alpha3;
+        action3 = KeyCode.Alpha3;*/
         healthStat = targetFrame.GetComponentInChildren<Stat>();
+        SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Punch"));
+        SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Sword"));
+        SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Sword"));
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(action1))
+        /*if (Input.GetKeyDown(action1))
         {
             ActionButtonOnClick(0);
         }
@@ -68,7 +72,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(action3))
         {
             //ActionButtonOnClick(2);
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -76,10 +80,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ActionButtonOnClick(int btnIndex)
+    /*private void ActionButtonOnClick(int btnIndex)
     {
         actionButtons[btnIndex].onClick.Invoke();
-    }
+    }*/
 
     public void ShowTargetFrame(NPC target)
     {
@@ -117,4 +121,17 @@ public class UIManager : MonoBehaviour
         Text tmp = Array.Find(keybindButtons, x => x.name == key).GetComponentInChildren<Text>();
         tmp.text = code.ToString();
     }
+
+    public void ClickActionButton(string buttonName)
+    {
+        Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
+    }
+
+    public void SetUsable(ActionButton btn, IUsable usable)
+    {
+        btn.MyIcon.sprite = usable.MyIcon;
+        btn.MyIcon.color = Color.white;
+        btn.MyUsable = usable;
+    }
+
 }
