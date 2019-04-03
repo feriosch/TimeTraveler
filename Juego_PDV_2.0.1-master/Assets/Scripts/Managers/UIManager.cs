@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private CanvasGroup keybindMenu;
+    [SerializeField]
+    private CanvasGroup spellBook;
 
     private GameObject[] keybindButtons;
 
@@ -52,38 +54,29 @@ public class UIManager : MonoBehaviour
         action2 = KeyCode.Alpha2;
         action3 = KeyCode.Alpha3;*/
         healthStat = targetFrame.GetComponentInChildren<Stat>();
-        SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Punch"));
+        /*SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Punch"));
         SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Sword"));
-        SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Sword"));
+        SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Sword"));*/
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(action1))
-        {
-            ActionButtonOnClick(0);
-        }
-        if (Input.GetKeyDown(action2))
-        {
-            ActionButtonOnClick(1);
-        }
-        if (Input.GetKeyDown(action3))
-        {
-            //ActionButtonOnClick(2);
-        }*/
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            OpenCloseMenu();
+            OpenClose(keybindMenu);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            OpenClose(spellBook);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            InventoryScript.MyInstance.OpenClose();
         }
     }
 
-    /*private void ActionButtonOnClick(int btnIndex)
-    {
-        actionButtons[btnIndex].onClick.Invoke();
-    }*/
 
     public void ShowTargetFrame(NPC target)
     {
@@ -109,12 +102,12 @@ public class UIManager : MonoBehaviour
         healthStat.MyCurrentValue = health;
     }
 
-    public void OpenCloseMenu()
+    /*public void OpenCloseMenu()
     {
         keybindMenu.alpha = keybindMenu.alpha > 0 ? 0 : 1;
         keybindMenu.blocksRaycasts = keybindMenu.blocksRaycasts == true ? false : true;
         Time.timeScale = Time.timeScale > 0 ? 0 : 1; //Pause
-    }
+    }*/
 
     public void UpdateKeyText(string key, KeyCode code)
     {
@@ -127,11 +120,30 @@ public class UIManager : MonoBehaviour
         Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
     }
 
-    public void SetUsable(ActionButton btn, IUsable usable)
+   
+    public void OpenClose(CanvasGroup canvasGroup)
     {
-        btn.MyIcon.sprite = usable.MyIcon;
-        btn.MyIcon.color = Color.white;
-        btn.MyUsable = usable;
+        canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
+        canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+    }
+
+    public void UpdateStackSize(IClickable clickable)
+    {
+        if (clickable.MyCount > 1)
+        {
+            clickable.MyStackText.text = clickable.MyCount.ToString();
+            clickable.MyStackText.color = Color.white;
+            clickable.MyIcon.color = Color.white;
+        }
+        else
+        {
+            clickable.MyStackText.color = new Color(0, 0, 0, 0);
+        }
+        if (clickable.MyCount == 0) //Si esta vacio, ocultamos el icono
+        {
+            clickable.MyIcon.color = new Color(0, 0, 0, 0);
+            clickable.MyStackText.color = new Color(0, 0, 0, 0);
+        }
     }
 
 }

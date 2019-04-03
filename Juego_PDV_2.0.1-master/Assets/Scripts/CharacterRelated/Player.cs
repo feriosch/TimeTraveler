@@ -29,13 +29,12 @@ public class Player : Character
     private int exitIndex;
     [SerializeField]
     private Block[] blocks;
-    private SpellBook spellBook;
+
     private Vector3 min, max;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        spellBook = GetComponent<SpellBook>();
         //target = GameObject.Find("Target").transform;
         base.Start();
     }
@@ -102,7 +101,11 @@ public class Player : Character
         //ATAQUE PRINCIPAL CLICK DERECHO
         if (Input.GetMouseButtonDown(1))
         {
-            CastSpell(SpellType);
+            if (SpellType != null)
+            {
+                CastSpell(SpellType);
+            }
+            
         }
 
         if (isMoving)
@@ -127,7 +130,7 @@ public class Player : Character
 
     private IEnumerator Attack(string spellName)
     {
-        Spell newSpell = spellBook.CastSpell(spellName);
+        Spell newSpell = SpellBook.MyInstance.CastSpell(spellName);
         Debug.Log(spellName);
         IsAttacking = true;
         MyAnimator.SetBool("attack", IsAttacking);

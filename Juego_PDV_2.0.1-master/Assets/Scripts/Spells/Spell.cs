@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 
 [Serializable]
-public class Spell : IUsable
+public class Spell : IUsable, IMovable
 {
     [SerializeField]
     private String name;

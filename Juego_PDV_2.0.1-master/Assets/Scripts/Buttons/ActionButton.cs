@@ -37,6 +37,25 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (HandScript.MyInstance.MyMovable != null && HandScript.MyInstance.MyMovable is IUsable)
+            {
+                SetUsable(HandScript.MyInstance.MyMovable as IUsable);
+            }
+        }
     }
+
+    public void SetUsable(IUsable usable)
+    {
+        this.MyUsable = usable;
+        UpdateVisual();
+    }
+
+    public void UpdateVisual()
+    {
+        MyIcon.sprite = HandScript.MyInstance.Put().MyIcon;
+        MyIcon.color = Color.white;
+    }
+
 }
