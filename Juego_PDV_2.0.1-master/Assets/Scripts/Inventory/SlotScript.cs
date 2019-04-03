@@ -111,9 +111,17 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
         }
     }
 
+    public void Clear()
+    {
+        if (items.Count > 0)
+        {
+            items.Clear();
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Middle)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (InventoryScript.MyInstance.FromSlot == null) //No tenemos item que mover
             { //Pickup Item
@@ -123,7 +131,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
             else if (InventoryScript.MyInstance.FromSlot != null) //Si tenemos item que mover
             {
                 //El orden del or es importante
-                if (PutItemBack() || SwapItems(InventoryScript.MyInstance.FromSlot) || AddItems(InventoryScript.MyInstance.FromSlot.items))
+                if (PutItemBack() || MergeItems(InventoryScript.MyInstance.FromSlot) || SwapItems(InventoryScript.MyInstance.FromSlot) || AddItems(InventoryScript.MyInstance.FromSlot.items))
                 {
                     HandScript.MyInstance.Drop();
                     InventoryScript.MyInstance.FromSlot = null;
@@ -131,7 +139,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
             }
 
         }
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
             UseItem();
         }
@@ -185,6 +193,25 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
             //Movemos los elementos de la copia de A a B.
             AddItems(tmpFrom);
 
+            return true;
+        }
+        return false;
+    }
+
+    private bool MergeItems(SlotScript from)
+    {
+        if (IsEmpty)
+        {
+            return false;
+        }
+        if (from.MyItem.GetType() == MyItem.GetType() && !IsFull)
+        {
+            //Cuantso espacios disponibles tenemos en el stack;
+            int free = MyItem.MyStackSize - MyCount;
+            for (int i = 0; i < free; i++)
+            {
+                AddItem(from.items.Pop());
+            }
             return true;
         }
         return false;
