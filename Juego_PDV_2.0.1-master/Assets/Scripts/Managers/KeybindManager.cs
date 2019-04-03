@@ -42,7 +42,7 @@ public class KeybindManager : MonoBehaviour
         BindKey("ACT2", KeyCode.Alpha2);
         BindKey("ACT3", KeyCode.Alpha3);
 
-        Debug.Log(KeyBinds);
+        //Debug.Log(KeyBinds);
     }
 
     public void BindKey(string key, KeyCode keyBind)
