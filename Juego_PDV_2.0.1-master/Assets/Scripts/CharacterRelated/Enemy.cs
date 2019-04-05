@@ -7,7 +7,8 @@ public class Enemy : NPC
     [SerializeField]
     private CanvasGroup healthGroup;
 
-    //private Transform target;
+    [SerializeField]
+    private float attackStrength;
 
     private State currentState;
 
@@ -28,6 +29,8 @@ public class Enemy : NPC
             return Vector2.Distance(transform.position, MyTarget.position) < MyAggroRange;
         }
     }
+
+    public float MyAttackStrength { get => attackStrength; }
 
     protected void Awake()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    private float attackCooldown = .5f;
+    private float attackCooldown = .3f;
     private float extraRange = .1f;
 
     public override void Exit()
@@ -41,7 +41,11 @@ public class AttackState : State
 
         parent.MyAnimator.SetTrigger("attack");
 
+        Player.MyInstance.MyHealth.MyCurrentValue -= parent.MyAttackStrength;
+
         yield return new WaitForSeconds(parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length);
+
+        //Player.MyInstance.MyHealth.MyCurrentValue -= parent.MyAttackStrength;
 
         parent.IsAttacking = false;
     }
