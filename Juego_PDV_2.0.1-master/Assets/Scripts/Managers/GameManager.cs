@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     private Player player;
 
     private NPC currentTarget;
+
+    [SerializeField]
+    private Item potion;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
                     currentTarget.DeSelect();
                 }
 
-                
+
                 currentTarget = hit.collider.GetComponent<NPC>();
 
                 player.MyTarget = currentTarget.Select();
@@ -57,10 +60,22 @@ public class GameManager : MonoBehaviour
                 currentTarget = null;
                 player.MyTarget = null;
             }
-                
-                
-            //Debug.Log("Hola")
         }
-        
+        else if (Input.GetMouseButtonDown(2) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
+            if (hit.collider != null && hit.collider.tag == "Enemy")
+            {
+                currentTarget = hit.collider.GetComponent<NPC>();
+                if (!currentTarget.IsAlive)
+                {
+                    HealthPotion potionInstance = (HealthPotion)Instantiate(potion);
+                    InventoryScript.MyInstance.AddItem(potionInstance);
+                    currentTarget.OnCharacterRemoved();
+                }
+            }
+        }
+
+
     }
 }

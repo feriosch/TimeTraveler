@@ -17,5 +17,4 @@ public class HealthPotion : Item, IUsable
         }
         
     }
-
 }
