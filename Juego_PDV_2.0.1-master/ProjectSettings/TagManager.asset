@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - EnemyHitbox
+  - EnemyRange
+  - Keybind
   layers:
   - Default
   - TransparentFX

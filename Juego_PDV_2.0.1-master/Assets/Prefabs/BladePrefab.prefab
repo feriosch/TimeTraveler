@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1695722167574200571}
   - component: {fileID: 6550405664619929026}
   - component: {fileID: 2485757993844983999}
-  - component: {fileID: 7767080881728438105}
+  - component: {fileID: 5633306068686142281}
+  - component: {fileID: 8328823621210572479}
   m_Layer: 0
   m_Name: BladePrefab
   m_TagString: Untagged
@@ -116,7 +117,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!61 &7767080881728438105
+  spellTime: 0.4
+  damage: 5
+--- !u!95 &5633306068686142281
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63563498770136854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87290f3ad7bf6724a8611b5d3b1214a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &8328823621210572479
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
