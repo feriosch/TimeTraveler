@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-guid: 59fa6bc3cca156447ae9b3071cc4f22d
+guid: 7d9fbebfcd0a1ba4cb2fa8bc5a72349c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Wolf_Attack_0
-    21300002: Wolf_Attack_1
-    21300004: Wolf_Attack_2
-    21300006: Wolf_Attack_3
-    21300008: Wolf_Attack_4
+    21300000: BagBox_0
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -89,13 +85,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wolf_Attack_0
+      name: BagBox_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 520
-        width: 124
-        height: 116
+        x: 11
+        y: 13
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,87 +99,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d47308878690a04daaca49e47a9c86a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wolf_Attack_1
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 392
-        width: 124
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3801fc603b69afc46951b54468d45817
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wolf_Attack_2
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 264
-        width: 124
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42e2020d14bbe0b469b238b9332bdd43
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wolf_Attack_3
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 136
-        width: 124
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16636807e7171544e920d2e97a70eb77
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wolf_Attack_4
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 8
-        width: 124
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19741dfd530958b45ac36e9c971f211b
+      spriteID: 96b1afd36dae22140bce3613ed203217
       vertices: []
       indices: 
       edges: []
@@ -191,7 +107,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d7c229e5db14ea247869ce0672a48776
+    spriteID: 0c68b332c5954e349a841affabb14ff9
     vertices: []
     indices: 
     edges: []

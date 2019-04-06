@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private Player player;
+
+    [SerializeField]
+    private Image youDied;
 
     private NPC currentTarget;
 
@@ -15,12 +19,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        youDied.color = new Color(0, 0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //SEGUNDA ENTREGA SE VA A BORRAR
+        if (player.MyHealth.MyCurrentValue <= 0)
+        {
+
+            youDied.color = Color.white;
+        }
+
+
         //Debug.Log(LayerMask.GetMask("Clicks"));
         ClickTarget();
     }
