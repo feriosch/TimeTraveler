@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class SpellScript : MonoBehaviour
 {
+    private static Player instance;
+    public static Player MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+            }
+
+            return instance;
+        }
+    }
+
     private Rigidbody2D myRigidBody;
 
     [SerializeField]
@@ -14,13 +28,15 @@ public class SpellScript : MonoBehaviour
 
     private float time = 0;
 
-
-    public Transform MyTarget { get; private set; }
-
     private Transform source;
 
     [SerializeField]
-    private int damage = 10;
+    private int damage;
+
+
+    public Transform MyTarget { get; private set; }
+    public int MyDamage { get => damage; set => damage = value; }
+
 
     //private bool alive = true; //El ataque sigue vivo, aun no se ha detenido. 
 
@@ -65,7 +81,7 @@ public class SpellScript : MonoBehaviour
         {
             Character c = collision.GetComponentInParent<Character>();
             speed = 0;
-            c.TakeDamage(damage, source);
+            c.TakeDamage(damage + (Player.MyInstance.MyLevel * 5), source);
             //collision.GetComponentInParent<Enemy>().TakeDamage(damage);
             GetComponent<Animator>().SetTrigger("Impact");
             myRigidBody.velocity = Vector2.zero;

@@ -22,7 +22,7 @@ public class Spell : IUsable, IMovable
     private GameObject spellPrefab;
 
     public string MyName { get => name; }
-    public int MyDamage { get => damage; }
+    public int MyDamage { get => damage; set => damage = value; }
     public Sprite MyIcon { get => icon; }
     public float MySpeed { get => speed;  }
     public GameObject MySpellPrefab { get => spellPrefab; }

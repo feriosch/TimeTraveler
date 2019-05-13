@@ -15,7 +15,14 @@ public class NPC : Character
     [SerializeField]
     private Sprite portrait;
 
+    [SerializeField]
+    private float xpPoints;
+
+    [SerializeField]
+    public Item[] items;
+
     public Sprite MyPortrait { get => portrait;}
+    public float MyXpPoints { get => xpPoints; set => xpPoints = value; }
 
     public virtual void DeSelect()
     {

@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
 
     private NPC currentTarget;
 
-    [SerializeField]
-    private Item potion;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +26,7 @@ public class GameManager : MonoBehaviour
         //SEGUNDA ENTREGA SE VA A BORRAR
         if (player.MyHealth.MyCurrentValue <= 0)
         {
-
+            Player.MyInstance.transform.position = new Vector3(-100, 0, 0);
             youDied.color = Color.white;
         }
 
@@ -50,7 +48,10 @@ public class GameManager : MonoBehaviour
 
                 if (currentTarget != null)
                 {
-                    currentTarget.DeSelect();
+                    if (player.SpellType != null)
+                    {
+                        player.CastSpell(player.SpellType);
+                    }
                 }
 
 
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
                 player.MyTarget = null;
             }
         }
-        else if (Input.GetMouseButtonDown(2) && !EventSystem.current.IsPointerOverGameObject())
+        else if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
             if (hit.collider != null && hit.collider.tag == "Enemy")
@@ -81,8 +82,11 @@ public class GameManager : MonoBehaviour
                 currentTarget = hit.collider.GetComponent<NPC>();
                 if (!currentTarget.IsAlive)
                 {
-                    HealthPotion potionInstance = (HealthPotion)Instantiate(potion);
-                    InventoryScript.MyInstance.AddItem(potionInstance);
+                    foreach (Item item in currentTarget.items)
+                    {
+                        InventoryScript.MyInstance.AddItem(item);
+                    }
+                    player.TakeXP(currentTarget.MyXpPoints);
                     currentTarget.OnCharacterRemoved();
                 }
             }

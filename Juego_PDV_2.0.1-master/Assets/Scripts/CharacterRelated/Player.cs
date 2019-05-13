@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : Character
 {
     private static Player instance;
-
     public static Player MyInstance
     {
         get
@@ -18,70 +17,94 @@ public class Player : Character
             return instance;
         }
     }
-    //[SerializeField]
-    //private Stat health;
-    //[SerializeField]
-    //private int AttackType = 0;
+
+    [SerializeField]
+    private int level;
+    public int MyLevel { get => level; set => level = value; }
+
+
     public int AttackType { get; set; }
     public string SpellType { get; set; }
-    //[SerializeField]
-    //private GameObject[] spellPrefab;
     private int exitIndex;
     [SerializeField]
     private Block[] blocks;
 
     private Vector3 min, max;
 
+    [SerializeField]
+    protected XP xp;
+    public XP MyXP
+    {
+        get { return xp; }
+    }
+
+    
+
+    [SerializeField]
+    private float initXP;
+
+
     // Start is called before the first frame update
     protected override void Start()
     {
-        //target = GameObject.Find("Target").transform;
         base.Start();
+        xp.Initialize(initXP, 100);
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         GetInput();
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), Mathf.Clamp(transform.position.y, min.y, max.y), transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         base.Update();
     }
 
     public void GetInput()
     {
         Direction = Vector2.zero;
+        Speed = 4;
 
-        //solamente para probar que funcione la vida
+        //Debug
         if (Input.GetKeyDown(KeyCode.M))
         {
-            health.MyCurrentValue -= 10;
+            TakeXP(10);
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
             health.MyCurrentValue += 10;
         }
 
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftAlt))
+        {
+            Speed = 6;
+        }
+
         //movimiento del jugador
-        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["UP"]))
+        if (IsAlive)
         {
-            exitIndex = 0;
-            Direction += Vector2.up;
+            if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["UP"]))
+            {
+                exitIndex = 0;
+                Direction += Vector2.up;
+            }
+            if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["DOWN"]))
+            {
+                exitIndex = 2;
+                Direction += Vector2.down;
+            }
+            if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["RIGHT"]))
+            {
+                exitIndex = 1;
+                Direction += Vector2.right;
+            }
+            if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["LEFT"]))
+            {
+                exitIndex = 3;
+                Direction += Vector2.left;
+            }
         }
-        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["DOWN"]))
-        {
-            exitIndex = 2;
-            Direction += Vector2.down;
-        }
-        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["RIGHT"]))
-        {
-            exitIndex = 1;
-            Direction += Vector2.right;
-        }
-        if (Input.GetKey(KeybindManager.MyInstance.KeyBinds["LEFT"]))
-        {
-            exitIndex = 3;
-            Direction += Vector2.left;
-        }
+        
+       
 
         //seleccion de item de ataque
         /*if (Input.GetKey(KeyCode.Alpha1))
@@ -131,7 +154,7 @@ public class Player : Character
     private IEnumerator Attack(string spellName)
     {
         Spell newSpell = SpellBook.MyInstance.CastSpell(spellName);
-        Debug.Log(spellName);
+        //Debug.Log(spellName);
         IsAttacking = true;
         MyAnimator.SetBool("attack", IsAttacking);
         yield return new WaitForSeconds(newSpell.MyCastTime); //hardcode
@@ -159,7 +182,6 @@ public class Player : Character
         if (MyTarget != null)
         {
             Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
-            //Debug.DrawRay(transform.position, targetDirection, Color.red);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
             if (hit.collider == null)
             {
@@ -192,5 +214,10 @@ public class Player : Character
             IsAttacking = false;
             MyAnimator.SetBool("attack", IsAttacking);
         }
+    }
+
+    public void TakeXP(float experience)
+    {
+        xp.MyCurrentValue += experience;
     }
 }

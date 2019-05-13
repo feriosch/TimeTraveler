@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264158ee9b3ddb34c8c34879c6782d07, type: 3}
-  m_Name: HealthPotion
+  m_Script: {fileID: 11500000, guid: 22989c7ef24edb747ae432fe977fbf37, type: 3}
+  m_Name: Fruit
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 747b23aa4af4af648b65057897cb8716, type: 3}
+  icon: {fileID: 21300000, guid: 74a4c5ae1c38daf44bd793b51b8b8b22, type: 3}
   stackSize: 5
   title: {fileID: 0}
-  health: 30
+  health: 15

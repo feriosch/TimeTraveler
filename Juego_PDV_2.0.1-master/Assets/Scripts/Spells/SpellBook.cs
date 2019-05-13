@@ -20,7 +20,7 @@ public class SpellBook : MonoBehaviour
         }
     }
     [SerializeField]
-    private Spell[] spells;
+    protected Spell[] spells;
     // Start is called before the first frame update
     void Start()
     {

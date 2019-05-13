@@ -9,12 +9,12 @@ public class Stat : MonoBehaviour
     private Image content;
 
     [SerializeField]
-    private TextMeshProUGUI statValue;
+    protected TextMeshProUGUI statValue;
 
     [SerializeField]
     private float lerpSpeed = 5f;
 
-    private float currentFill;
+    protected float currentFill;
 
     public float MyMaxValue { get; set; }
     public float MyCurrentValue
@@ -48,17 +48,17 @@ public class Stat : MonoBehaviour
         }
     }
 
-    private float currentValue;
+    protected float currentValue;
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         content = GetComponent<Image>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (currentFill != content.fillAmount)
         {

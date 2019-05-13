@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264158ee9b3ddb34c8c34879c6782d07, type: 3}
-  m_Name: HealthPotion
+  m_Script: {fileID: 11500000, guid: 9bdcc49ffd253b548a9b434471cec4ec, type: 3}
+  m_Name: XPPotion
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 747b23aa4af4af648b65057897cb8716, type: 3}
-  stackSize: 5
+  icon: {fileID: 21300000, guid: d197480a837c4ca4eadc6f2e5b32a93d, type: 3}
+  stackSize: 1
   title: {fileID: 0}
-  health: 30
+  xp: 70

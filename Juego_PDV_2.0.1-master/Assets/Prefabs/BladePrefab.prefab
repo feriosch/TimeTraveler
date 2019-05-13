@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   spellTime: 0.4
-  damage: 5
+  damage: 7
 --- !u!95 &5633306068686142281
 Animator:
   serializedVersion: 3
