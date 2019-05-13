@@ -10,14 +10,14 @@ public class GameManager : MonoBehaviour
     private Player player;
 
     [SerializeField]
-    private Image youDied;
+    private GameObject youDied;
 
     private NPC currentTarget;
 
     // Start is called before the first frame update
     void Start()
     {
-        youDied.color = new Color(0, 0, 0, 0);
+        youDied.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
         if (player.MyHealth.MyCurrentValue <= 0)
         {
             Player.MyInstance.transform.position = new Vector3(-100, 0, 0);
-            youDied.color = Color.white;
+            youDied.SetActive(true);
+            youDied.GetComponent<Image>().color = Color.white;
         }
 
 

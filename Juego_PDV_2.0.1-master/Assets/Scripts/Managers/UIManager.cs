@@ -9,10 +9,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private ActionButton[] actionButtons;
 
+    [SerializeField]
+    private Player player;
+
     /*private KeyCode action1, action2, action3;*/
 
     private static UIManager instance;
-
     public static UIManager MyInstance
     {
         get {
@@ -33,11 +35,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Image portraitFrame;
-
     [SerializeField]
     private CanvasGroup keybindMenu;
     [SerializeField]
     private CanvasGroup spellBook;
+    [SerializeField]
+    private CanvasGroup tutorial;
+    [SerializeField]
+    private CanvasGroup pauseMenu;
 
     private GameObject[] keybindButtons;
 
@@ -48,16 +53,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
-        //KeyBinds
-        /*action1 = KeyCode.Alpha1;
-        action2 = KeyCode.Alpha2;
-        action3 = KeyCode.Alpha3;*/
         healthStat = targetFrame.GetComponentInChildren<Stat>();
-        /*SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Punch"));
-        SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Sword"));
-        SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Sword"));*/
-
     }
 
     // Update is called once per frame
@@ -67,13 +63,22 @@ public class UIManager : MonoBehaviour
         {
             OpenClose(keybindMenu);
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             OpenClose(spellBook);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             InventoryScript.MyInstance.OpenClose();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            OpenClose(tutorial);
+        }
+        if (Input.GetKeyDown(KeyCode.P) && player.IsAlive)
+        {
+            OpenClose(pauseMenu);
+            Time.timeScale = Time.timeScale > 0 ? 0 : 1; //Pause
         }
     }
 
@@ -106,7 +111,7 @@ public class UIManager : MonoBehaviour
     {
         keybindMenu.alpha = keybindMenu.alpha > 0 ? 0 : 1;
         keybindMenu.blocksRaycasts = keybindMenu.blocksRaycasts == true ? false : true;
-        Time.timeScale = Time.timeScale > 0 ? 0 : 1; //Pause
+        
     }*/
 
     public void UpdateKeyText(string key, KeyCode code)
