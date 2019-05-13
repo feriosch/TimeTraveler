@@ -10,8 +10,21 @@ public class SceneManage : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void LoadFirstLevel(PlayerData data)
+    {
+        Player.MyInstance.transform.position = data.position;
+        Player.MyInstance.MyHealth.MyMaxValue = data.maxHealth;
+        Player.MyInstance.MyHealth.MyCurrentValue = data.health;
+        Player.MyInstance.MyLevel = data.level;
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void DoExitGame()
+    {
+        Application.Quit();
     }
 }

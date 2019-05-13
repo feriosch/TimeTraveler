@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private Player player;
-
     [SerializeField]
     private GameObject youDied;
+
+    private static SceneManage instance;
+    public static SceneManage MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<SceneManage>();
+            }
+
+            return instance;
+        }
+    }
 
     private NPC currentTarget;
 
@@ -23,16 +37,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //SEGUNDA ENTREGA SE VA A BORRAR
         if (player.MyHealth.MyCurrentValue <= 0)
         {
             Player.MyInstance.transform.position = new Vector3(-100, 0, 0);
             youDied.SetActive(true);
             youDied.GetComponent<Image>().color = Color.white;
         }
-
-
-        //Debug.Log(LayerMask.GetMask("Clicks"));
         ClickTarget();
     }
 
@@ -95,4 +105,63 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    public void SaveAction()
+    {
+        PlayerData data = new PlayerData();
+        data.position = player.transform.position;
+        data.maxHealth = player.MyHealth.MyMaxValue;
+        data.health = player.MyHealth.MyCurrentValue;
+        data.level = player.MyLevel;
+
+        string dataString = JsonUtility.ToJson(data);
+        GameManager.Save(dataString);
+        Debug.Log("Save Action");
+        Debug.Log("Data string: " + dataString);
+    }
+
+    public void LoadAction()
+    {
+        string dataString = GameManager.Load();
+        PlayerData data = JsonUtility.FromJson<PlayerData>(dataString);
+        MyInstance.LoadFirstLevel(data);
+    }
+
+    public static void Save(string jsonString, string filename = "save.json", string storePath = null)
+    {
+        if (storePath == null)
+        {
+            storePath = Application.dataPath + "/saves";
+        }
+        if (!Directory.Exists(storePath))
+        {
+            Directory.CreateDirectory(storePath);
+        }
+        string fullPath = storePath + "/" + filename;
+        File.WriteAllText(fullPath, jsonString);
+    }
+
+    public static string Load(string filename = "save.json", string storePath = null)
+    {
+        if (storePath == null)
+        {
+            storePath = Application.dataPath + "/saves";
+        }
+        string fullPath = storePath + "/" + filename;
+        string loaded = null;
+        if (File.Exists(fullPath))
+        {
+            loaded = File.ReadAllText(fullPath);
+        }
+        return loaded;
+    }
+}
+
+public class PlayerData
+{
+    public Stack<Item> items;
+    public Vector3 position;
+    public float health;
+    public float maxHealth;
+    public int level;
 }

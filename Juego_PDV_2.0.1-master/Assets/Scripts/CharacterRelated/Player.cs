@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -42,7 +43,6 @@ public class Player : Character
 
     [SerializeField]
     private float initXP;
-
 
     // Start is called before the first frame update
     protected override void Start()
