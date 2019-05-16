@@ -38,7 +38,7 @@ public class XP : Stat
             {
                 currentValue = 0;
                 MyInstance.MyLevel++;
-                MyInstance.MyHealth.MyMaxValue += 10;
+                MyInstance.MyHealth.MyMaxValue += 25;
                 MyInstance.MyHealth.MyCurrentValue = MyInstance.MyHealth.MyMaxValue;
             }
             else if (value < 0)

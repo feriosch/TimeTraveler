@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
     private ActionButton[] actionButtons;
 
     [SerializeField]
+    private GameManager gameManager;
+
+    [SerializeField]
     private Player player;
 
     /*private KeyCode action1, action2, action3;*/
@@ -75,10 +78,18 @@ public class UIManager : MonoBehaviour
         {
             OpenClose(tutorial);
         }
-        if (Input.GetKeyDown(KeyCode.P) && player.IsAlive)
+        if (Input.GetKeyDown(KeyCode.P) && player.IsAlive && gameManager.MyStage != 4)
         {
             OpenClose(pauseMenu);
-            Time.timeScale = Time.timeScale > 0 ? 0 : 1; //Pause
+            if (pauseMenu.alpha == 1)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+            //Time.timeScale = Time.timeScale > 0 ? 0 : 1; //Pause
         }
     }
 

@@ -122,14 +122,14 @@ public class Player : Character
         }*/
 
         //ATAQUE PRINCIPAL CLICK DERECHO
-        if (Input.GetMouseButtonDown(1))
+        /*if (Input.GetMouseButtonDown(1))
         {
             if (SpellType != null)
             {
                 CastSpell(SpellType);
             }
             
-        }
+        }*/
 
         if (isMoving)
         {

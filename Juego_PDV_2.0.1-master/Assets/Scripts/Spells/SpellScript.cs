@@ -77,15 +77,23 @@ public class SpellScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "EnemyHitbox" && collision.transform == MyTarget.transform)
+        try
         {
-            Character c = collision.GetComponentInParent<Character>();
-            speed = 0;
-            c.TakeDamage(damage + (Player.MyInstance.MyLevel * 5), source);
-            //collision.GetComponentInParent<Enemy>().TakeDamage(damage);
-            GetComponent<Animator>().SetTrigger("Impact");
-            myRigidBody.velocity = Vector2.zero;
-            MyTarget = null;
+            if (collision.tag == "EnemyHitbox" && collision.transform == MyTarget.transform)
+            {
+                Character c = collision.GetComponentInParent<Character>();
+                speed = 0;
+                c.TakeDamage(damage + (Player.MyInstance.MyLevel * 5), source);
+                //collision.GetComponentInParent<Enemy>().TakeDamage(damage);
+                GetComponent<Animator>().SetTrigger("Impact");
+                myRigidBody.velocity = Vector2.zero;
+                MyTarget = null;
+            }
         }
+        catch
+        {
+            Debug.Log("Error");
+        }
+        
     }
 }
