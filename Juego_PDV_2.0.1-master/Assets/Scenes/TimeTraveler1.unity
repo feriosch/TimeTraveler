@@ -4895,12 +4895,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.3
+  speed: 1.5
   hitBox: {fileID: 944237409}
   health: {fileID: 1145191764}
-  initHealth: 60
+  initHealth: 120
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 60
+  xpPoints: 30
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 12555027}
@@ -9010,16 +9010,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 1
   hitBox: {fileID: 1033878078}
   health: {fileID: 1918860326}
-  initHealth: 120
+  initHealth: 150
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
   xpPoints: 30
   items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
+  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 1829585693}
-  attackStrength: 30
+  attackStrength: 40
   initAggroRange: 8
 --- !u!212 &191462014
 SpriteRenderer:
@@ -14548,7 +14549,7 @@ MonoBehaviour:
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
   xpPoints: 30
   items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 499157411}
   attackStrength: 30
   initAggroRange: 8
@@ -25677,13 +25678,12 @@ MonoBehaviour:
   speed: 1.2
   hitBox: {fileID: 1386859594}
   health: {fileID: 1032044897}
-  initHealth: 20
+  initHealth: 80
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 40
-  items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  xpPoints: 10
+  items: []
   healthGroup: {fileID: 1809310698}
-  attackStrength: 20
+  attackStrength: 15
   initAggroRange: 4
 --- !u!212 &608094342
 SpriteRenderer:
@@ -27215,9 +27215,9 @@ MonoBehaviour:
   speed: 1.6
   hitBox: {fileID: 249954907}
   health: {fileID: 536300145}
-  initHealth: 50
+  initHealth: 135
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 40
+  xpPoints: 30
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 1980411461}
@@ -28192,9 +28192,9 @@ MonoBehaviour:
   speed: 1.3
   hitBox: {fileID: 1476970778}
   health: {fileID: 217223933}
-  initHealth: 60
+  initHealth: 100
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 60
+  xpPoints: 20
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 259777096}
@@ -31030,17 +31030,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.4
+  speed: 1.7
   hitBox: {fileID: 1343810837}
   health: {fileID: 2099604402}
-  initHealth: 350
+  initHealth: 400
   portrait: {fileID: 21300000, guid: ca7508ae5a296d5429c11ad7643aafe5, type: 3}
-  xpPoints: 40
+  xpPoints: 70
   items:
   - {fileID: 11400000, guid: 106b4f9015fa80940be238225fc41454, type: 2}
-  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
+  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
   healthGroup: {fileID: 1901149744}
-  attackStrength: 40
+  attackStrength: 70
   initAggroRange: 4
 --- !u!212 &790283734
 SpriteRenderer:
@@ -31640,16 +31640,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 1
   hitBox: {fileID: 925784052}
   health: {fileID: 1147098798}
-  initHealth: 120
+  initHealth: 150
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
-  xpPoints: 30
+  xpPoints: 20
   items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 63047146}
-  attackStrength: 30
+  attackStrength: 15
   initAggroRange: 8
 --- !u!212 &800804931
 SpriteRenderer:
@@ -34723,9 +34723,9 @@ MonoBehaviour:
   speed: 1.6
   hitBox: {fileID: 668534523}
   health: {fileID: 215299279}
-  initHealth: 50
+  initHealth: 100
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 40
+  xpPoints: 10
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 1345979195}
@@ -35223,7 +35223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.75
+  speed: 1.3
   hitBox: {fileID: 1541121525}
   health: {fileID: 1290112159}
   initHealth: 400
@@ -35234,7 +35234,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
   - {fileID: 11400000, guid: 106b4f9015fa80940be238225fc41454, type: 2}
   healthGroup: {fileID: 1759199591}
-  attackStrength: 50
+  attackStrength: 120
   initAggroRange: 4
 --- !u!212 &879914157
 SpriteRenderer:
@@ -43124,7 +43124,7 @@ MonoBehaviour:
   speed: 1.2
   hitBox: {fileID: 1188906619}
   health: {fileID: 530939626}
-  initHealth: 120
+  initHealth: 300
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
   xpPoints: 30
   items:
@@ -44284,8 +44284,7 @@ MonoBehaviour:
   initHealth: 40
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
   xpPoints: 20
-  items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  items: []
   healthGroup: {fileID: 1545281165}
   attackStrength: 15
   initAggroRange: 4
@@ -45464,9 +45463,9 @@ MonoBehaviour:
   speed: 1.3
   hitBox: {fileID: 833820401}
   health: {fileID: 1356014000}
-  initHealth: 60
+  initHealth: 120
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 60
+  xpPoints: 30
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 282304171}
@@ -51910,16 +51909,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 1.8
   hitBox: {fileID: 1680032593}
   health: {fileID: 215052300}
-  initHealth: 120
+  initHealth: 200
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
-  xpPoints: 30
+  xpPoints: 50
   items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  - {fileID: 11400000, guid: 106b4f9015fa80940be238225fc41454, type: 2}
   healthGroup: {fileID: 1988090627}
-  attackStrength: 30
+  attackStrength: 50
   initAggroRange: 8
 --- !u!212 &1345973732
 SpriteRenderer:
@@ -59280,12 +59279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 1.7
   hitBox: {fileID: 695931336}
   health: {fileID: 787448107}
-  initHealth: 50
+  initHealth: 100
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 40
+  xpPoints: 20
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 955730156}
@@ -59713,13 +59712,13 @@ MonoBehaviour:
   speed: 1.6
   hitBox: {fileID: 867062081}
   health: {fileID: 1727630702}
-  initHealth: 120
+  initHealth: 300
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
-  xpPoints: 30
+  xpPoints: 60
   items:
   - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
   healthGroup: {fileID: 242652496}
-  attackStrength: 30
+  attackStrength: 50
   initAggroRange: 8
 --- !u!212 &1520894100
 SpriteRenderer:
@@ -63832,7 +63831,7 @@ MonoBehaviour:
   portrait: {fileID: 21300000, guid: 0b94abe2fbf235f4bab1d9fa2a34a426, type: 3}
   xpPoints: 15
   items:
-  - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
+  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 304323494}
   attackStrength: 5
   initAggroRange: 3
@@ -70400,17 +70399,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1.5
   hitBox: {fileID: 1140632554}
   health: {fileID: 2002547689}
   initHealth: 300
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 70
+  xpPoints: 60
   items:
-  - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
+  - {fileID: 11400000, guid: 106b4f9015fa80940be238225fc41454, type: 2}
   - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
   healthGroup: {fileID: 464373325}
-  attackStrength: 30
+  attackStrength: 50
   initAggroRange: 4
 --- !u!212 &1808382982
 SpriteRenderer:
@@ -70995,12 +70994,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1.6
   hitBox: {fileID: 65579557}
   health: {fileID: 833121084}
-  initHealth: 120
+  initHealth: 150
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
-  xpPoints: 30
+  xpPoints: 40
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
@@ -73461,16 +73460,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1.5
   hitBox: {fileID: 102249577}
   health: {fileID: 2111138438}
-  initHealth: 120
+  initHealth: 150
   portrait: {fileID: 21300000, guid: 584bbc0146da56c439b266bceaa71a45, type: 3}
-  xpPoints: 30
+  xpPoints: 40
   items:
   - {fileID: 11400000, guid: 552f184a7129d5641adfb49c33b623f3, type: 2}
   healthGroup: {fileID: 2045262234}
-  attackStrength: 30
+  attackStrength: 40
   initAggroRange: 8
 --- !u!212 &1859555043
 SpriteRenderer:
@@ -80444,12 +80443,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 2.8
   hitBox: {fileID: 2009209673}
   health: {fileID: 2102274678}
   initHealth: 50
   portrait: {fileID: 21300004, guid: 3bf4cc022dd9d724f9eb6c59c9cd366a, type: 3}
-  xpPoints: 40
+  xpPoints: 5
   items:
   - {fileID: 11400000, guid: e7121585501a1e94ea47d113eb88ef08, type: 2}
   healthGroup: {fileID: 1284895641}
