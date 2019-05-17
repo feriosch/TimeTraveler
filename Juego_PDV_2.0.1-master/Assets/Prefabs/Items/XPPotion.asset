@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: XPPotion
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: d197480a837c4ca4eadc6f2e5b32a93d, type: 3}
-  stackSize: 1
+  stackSize: 10
   title: {fileID: 0}
   xp: 70
