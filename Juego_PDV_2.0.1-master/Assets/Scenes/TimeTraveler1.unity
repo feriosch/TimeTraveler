@@ -4895,7 +4895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.8
   hitBox: {fileID: 944237409}
   health: {fileID: 1145191764}
   initHealth: 150
@@ -7580,7 +7580,7 @@ MonoBehaviour:
   speed: 4
   hitBox: {fileID: 0}
   health: {fileID: 1825782015}
-  initHealth: 100
+  initHealth: 200
   level: 0
   blocks:
   - first: {fileID: 2139604534}
@@ -8152,7 +8152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.4
+  speed: 1
   hitBox: {fileID: 1289745250}
   health: {fileID: 202718098}
   initHealth: 50
@@ -8327,7 +8327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 1
   hitBox: {fileID: 1463214374}
   health: {fileID: 261024340}
   initHealth: 40
@@ -27208,7 +27208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.1
+  speed: 1.8
   hitBox: {fileID: 249954907}
   health: {fileID: 536300145}
   initHealth: 140
@@ -28185,7 +28185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 1.8
   hitBox: {fileID: 1476970778}
   health: {fileID: 217223933}
   initHealth: 120
@@ -34716,7 +34716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.2
+  speed: 1.8
   hitBox: {fileID: 668534523}
   health: {fileID: 215299279}
   initHealth: 120
@@ -39806,7 +39806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 3
   hitBox: {fileID: 672987442}
   health: {fileID: 909658653}
   initHealth: 350
@@ -44273,7 +44273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.9
+  speed: 1
   hitBox: {fileID: 2014944129}
   health: {fileID: 315068785}
   initHealth: 100
@@ -45455,7 +45455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.8
   hitBox: {fileID: 833820401}
   health: {fileID: 1356014000}
   initHealth: 150
@@ -49976,7 +49976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.2
+  speed: 1.5
   hitBox: {fileID: 71319257}
   health: {fileID: 643006706}
   initHealth: 50
@@ -53167,7 +53167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.8
+  speed: 1
   hitBox: {fileID: 417886191}
   health: {fileID: 105086603}
   initHealth: 60
@@ -54787,7 +54787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 3
   hitBox: {fileID: 353589426}
   health: {fileID: 1284582540}
   initHealth: 350
@@ -55843,7 +55843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 3
   hitBox: {fileID: 1845349796}
   health: {fileID: 467567992}
   initHealth: 350
@@ -56635,7 +56635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.1
+  speed: 3
   hitBox: {fileID: 282593609}
   health: {fileID: 33910337}
   initHealth: 300
@@ -59273,7 +59273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.2
+  speed: 1.8
   hitBox: {fileID: 695931336}
   health: {fileID: 787448107}
   initHealth: 150
@@ -59703,7 +59703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 3
   hitBox: {fileID: 867062081}
   health: {fileID: 1727630702}
   initHealth: 350
@@ -63818,7 +63818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.2
+  speed: 1.5
   hitBox: {fileID: 1686128113}
   health: {fileID: 618110857}
   initHealth: 40
@@ -65293,7 +65293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1
   hitBox: {fileID: 1098679109}
   health: {fileID: 1543924243}
   initHealth: 40
@@ -66570,7 +66570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.8
+  speed: 2.6
   hitBox: {fileID: 2107609408}
   health: {fileID: 445748933}
   initHealth: 220
@@ -67055,7 +67055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 3
   hitBox: {fileID: 30419904}
   health: {fileID: 1627920624}
   initHealth: 300
@@ -67248,7 +67248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.8
+  speed: 1
   hitBox: {fileID: 396687881}
   health: {fileID: 827006986}
   initHealth: 40
@@ -69105,7 +69105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.1
+  speed: 1.5
   hitBox: {fileID: 1898971413}
   health: {fileID: 169457855}
   initHealth: 90
@@ -70024,8 +70024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000083447, y: -129.64}
-  m_SizeDelta: {x: 770.8, y: 94.4}
+  m_AnchoredPosition: {x: 153.7, y: -131.4}
+  m_SizeDelta: {x: 463.2, y: 50.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1799616762
 MonoBehaviour:
@@ -70735,7 +70735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.6
+  speed: 1
   hitBox: {fileID: 884894772}
   health: {fileID: 1777610189}
   initHealth: 60
@@ -70985,7 +70985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.8
+  speed: 2.6
   hitBox: {fileID: 65579557}
   health: {fileID: 833121084}
   initHealth: 200
@@ -72215,7 +72215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.8
+  speed: 2.6
   hitBox: {fileID: 245988642}
   health: {fileID: 334297414}
   initHealth: 220
@@ -75781,7 +75781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.2
+  speed: 1.5
   hitBox: {fileID: 7825667}
   health: {fileID: 25560566}
   initHealth: 50
@@ -78649,7 +78649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.2
+  speed: 1
   hitBox: {fileID: 1901657383}
   health: {fileID: 466725040}
   initHealth: 20
@@ -80431,7 +80431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e968e20036884d912208c3d714974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.8
+  speed: 2.2
   hitBox: {fileID: 2009209673}
   health: {fileID: 2102274678}
   initHealth: 50
