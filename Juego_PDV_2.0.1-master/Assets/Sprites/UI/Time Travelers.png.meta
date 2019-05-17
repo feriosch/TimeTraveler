@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: f941e6f5ac395774f904a09ec80793e3
+guid: 2d866a039ecee3743b4c3ef8a67d08c1
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: DragonBoss_Death_0
-    21300002: DragonBoss_Death_1
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -42,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,64 +69,13 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: DragonBoss_Death_0
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 0
-        width: 1141
-        height: 880
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa94ce44fc26da84d8b87f77514be262
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DragonBoss_Death_1
-      rect:
-        serializedVersion: 2
-        x: 1389
-        y: 0
-        width: 883
-        height: 880
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 956901d350b654048a7b36ad652f712c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1afcec8cfa535aa41a401d28d8b195ed
+    spriteID: bab0b1770f4fbc942ba5662035f0459d
     vertices: []
     indices: 
     edges: []

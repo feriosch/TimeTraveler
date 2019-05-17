@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: f941e6f5ac395774f904a09ec80793e3
+guid: 339a3ecdfb0122e47b35c1c866e251d9
 TextureImporter:
   fileIDToRecycleName:
-    21300000: DragonBoss_Death_0
-    21300002: DragonBoss_Death_1
+    21300000: DragonBoss_AttackRight_0
+    21300002: DragonBoss_AttackRight_1
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -86,13 +86,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DragonBoss_Death_0
+      name: DragonBoss_AttackRight_0
       rect:
         serializedVersion: 2
-        x: 65
-        y: 0
-        width: 1141
-        height: 880
+        x: 220
+        y: 901
+        width: 880
+        height: 838
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,19 +100,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa94ce44fc26da84d8b87f77514be262
+      spriteID: f0277ad5b076bee4390a2715dad8ad8d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DragonBoss_Death_1
+      name: DragonBoss_AttackRight_1
       rect:
         serializedVersion: 2
-        x: 1389
-        y: 0
-        width: 883
-        height: 880
+        x: 91
+        y: 10
+        width: 1217
+        height: 869
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 956901d350b654048a7b36ad652f712c
+      spriteID: f8390759b40cfa24387960dfa2a3e360
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1afcec8cfa535aa41a401d28d8b195ed
+    spriteID: ea0fea2d64e933c4faa50b742fda774d
     vertices: []
     indices: 
     edges: []
